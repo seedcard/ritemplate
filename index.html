@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEEDCARD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Set background to black */
+            color: #fff; /* Set text color to white */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px 10px;
+            background-color: #000; /* Black background */
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .wallet-info {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .wallet-info h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #fff; /* White text */
+        }
+
+        .wallet-info p#wallet-balance {
+            font-size: 2em; /* Larger font size for the balance */
+            color: #fff; /* White text */
+        }
+
+        .wallet-info .blockchair-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .wallet-info .blockchair-button:hover {
+            background-color: #0056b3;
+        }
+
+        .card-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .card-info p {
+            font-size: 1.2em;
+            color: #fff; /* White text */
+        }
+
+        footer {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media (max-width: 600px) {
+            footer {
+                padding: 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://imgbb.com"><img src="https://i.ibb.co/5M2Ksmd/SATOCARD-RELAI.png" alt="SATOCARD-RELAI" border="0"></a>
+    </header>
+
+    <div class="wallet-info">
+        <h3>Card Balance</h3>
+        <p id="wallet-balance">0.00000000 BTC</p> <!-- Larger font size applied -->
+        <a id="blockchair-link" href="#" target="_blank" class="blockchair-button">
+            View on Blockchair
+        </a>
+    </div>
+
+    <div class="card-info">
+        <p id="card-uid">Card Issuer / UID: XX12345671234567</p>
+        <p id="card-tag">Card ID: 0000000</p>
+    </div>
+
+    <footer>
+        <p> SEEDCARD - Open Source Bitcoin Project</p>
+    </footer>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Dynamically populate fields using URL parameters
+        document.addEventListener('DOMContentLoaded', () => {
+            const balance = getQueryParam('balance') || '0.00000000'; // Default to 0.00000000 BTC
+            const blockchairUrl = getQueryParam('blockchair');
+            const uid = getQueryParam('uid') || 'XX12345671234567'; // Default UID
+            const cardId = getQueryParam('card') || '0000000'; // Default tag ID
+
+            document.getElementById('wallet-balance').innerText = `${balance} BTC`; // Display balance in larger font
+
+            if (blockchairUrl) {
+                document.getElementById('blockchair-link').href = blockchairUrl;
+            }
+
+            document.getElementById('card-uid').innerText = `Card Issuer / UID: ${uid}`;
+            document.getElementById('card-tag').innerText = `Card ID: ${cardId}`;
+        });
+    </script>
+</body>
+</html>
